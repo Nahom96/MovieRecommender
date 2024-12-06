@@ -75,5 +75,40 @@ namespace MovieRecommender.Services
 
 			return new List<Genre>();
 		}
+		public async Task<List<Movie>> GetFilteredMoviesAsync(string year, int? genre, double? rating, int page = 1)
+		{
+			var url = $"{_baseUrl}/discover/movie?api_key={_apiKey}&page={page}";
+
+			// Add year filter
+			if (!string.IsNullOrEmpty(year))
+			{
+				url += $"&primary_release_year={year}";
+			}
+
+			// Add genre filter
+			if (genre.HasValue)
+			{
+				url += $"&with_genres={genre.Value}";
+			}
+
+			// Add rating filter
+			if (rating.HasValue)
+			{
+				url += $"&vote_average.gte={rating.Value}";
+			}
+
+			var client = new RestClient(url);
+			var request = new RestRequest();
+			var response = await client.ExecuteAsync(request);
+
+			if (response.IsSuccessful)
+			{
+				var movieResult = JsonConvert.DeserializeObject<MovieResult>(response.Content);
+				return movieResult?.Results ?? new List<Movie>();
+			}
+
+			return new List<Movie>();
+		}
+
 	}
 }

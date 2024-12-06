@@ -1,12 +1,46 @@
 body {
-    background-image: url('/Images/image.png');
+    background: linear-gradient(to right, #223954, #345e78) !important;
     font-family: 'Nunito Sans', sans-serif;
+    font:bolder;
     color: #fff;
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+}
+h1 {
+    font-size: 10rem; /* Huge text size */
+    font-weight: 900; /* Maximum boldness */
+    color: transparent; /* Make the fill transparent to emphasize the stroke */
+    -webkit-text-stroke: 3px white; /* Bold white outline */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); /* Add depth with shadow */
+    text-align: center; /* Center align the text */
+    margin: 0;
+    padding: 0;
+    line-height: 1; /* Compact the line height */
+}
+
+p {
+    font-size: 2.5rem; /* Larger font size for prominence */
+    font-weight: 700; /* Bold but slightly less than the heading */
+    color: rgba(255, 255, 255, 0.9); /* White with slight transparency */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Shadow for depth */
+    line-height: 1.4; /* Slightly spaced-out lines for readability */
+    text-align: center; /* Center the paragraph under the heading */
+    margin: 20px 0; /* Add spacing above and below the paragraph */
+    letter-spacing: 0.05em; /* Subtle spacing for better legibility */
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain; /* Try 'cover', 'fill', or 'none' for different behaviors */
+    z-index: -1;
+    background: black;
 }
 button{
     align-content:center;
@@ -27,6 +61,7 @@ button{
     box-shadow: inset 0 0 1.6em -0.6em rgba(255, 255, 255, 0.2);
     overflow: hidden;
     position: relative;
+    width:180px;
     height: 2.8em;
     padding-right: 3.3em;
     cursor: pointer;
